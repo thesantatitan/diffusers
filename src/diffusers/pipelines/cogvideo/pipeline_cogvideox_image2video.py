@@ -719,7 +719,7 @@ class CogVideoXImageToVideoPipeline(DiffusionPipeline):
             device, dtype=prompt_embeds.dtype
         )
 
-        latent_channels = self.transformer.config.in_channels // 2
+        latent_channels = self.transformer.config.in_channels
         latents, image_latents = self.prepare_latents(
             image,
             batch_size * num_videos_per_prompt,
