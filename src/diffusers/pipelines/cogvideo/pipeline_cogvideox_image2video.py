@@ -375,6 +375,7 @@ class CogVideoXImageToVideoPipeline(DiffusionPipeline):
         else:
             image_latents = [retrieve_latents(self.vae.encode(img.unsqueeze(0)), generator) for img in image]
 
+        print(f'OKAYYY : {image_latents.shape}')
         image_latents = torch.cat(image_latents, dim=0).to(dtype).permute(0, 2, 1, 3, 4)  # [B, F, C, H, W]
         image_latents = self.vae_scaling_factor_image * image_latents
 
