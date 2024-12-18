@@ -177,13 +177,13 @@ transformer = FluxTransformer2DModel.from_pretrained(
 ```
 
 > [!TIP]
-> At any point, you can try `print(pipeline.hf_device_map)` to see how the various models are distributed across devices. This is useful for tracking the device placement of the models.
+> At any point, you can try `print(pipeline.hf_device_map)` to see how the various models are distributed across devices. This is useful for tracking the device placement of the models. You can also try `print(transformer.hf_device_map)` to see how the transformer model is sharded across devices.
 
 Add the transformer model to the pipeline for denoising, but set the other model-level components like the text encoders and VAE to `None` because you don't need them yet.
 
 ```py
 pipeline = FluxPipeline.from_pretrained(
-    "black-forest-labs/FLUX.1-dev", ,
+    "black-forest-labs/FLUX.1-dev",
     text_encoder=None,
     text_encoder_2=None,
     tokenizer=None,
